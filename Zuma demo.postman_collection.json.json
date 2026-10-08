@@ -1,0 +1,257 @@
+{
+  "info": {
+    "_postman_id": "8a82d057-6ce1-47ea-8663-e10f1a0325c7",
+    "name": "Zuma demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56680446",
+    "_collection_link": "https://go.postman.co/collection/56680446-8a82d057-6ce1-47ea-8663-e10f1a0325c7?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Customer By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/customer/101",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "customer",
+            "101"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Customer Found",
+          "originalRequest": {
+            "method": "GET",
+            "header": []
+          },
+          "_postman_previewlanguage": "",
+          "header": [],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\r\n  \"id\": \"101\",\r\n  \"name\": \"Acme Corp\",\r\n  \"status\": \"Active\",\r\n  \"contractValue\": \"$120,000\"\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Customer",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/customer/101",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "customer",
+            "101"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Customer Deleted",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/customer/101",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "101"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "",
+          "header": [],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{ \"success\": true, \"deleted\": \"101\" }"
+        }
+      ]
+    },
+    {
+      "name": "List All Customers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/customers",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "customers"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Customer List",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/customers",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "customers"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "",
+          "header": [],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\r\n  \"totalRecords\": 3,\r\n  \"customers\": [\r\n    {\r\n      \"id\": \"101\",\r\n      \"name\": \"Acme Corp\",\r\n      \"status\": \"Active\",\r\n      \"tier\": \"Enterprise\",\r\n      \"creditLimit\": 150000\r\n    },\r\n    {\r\n      \"id\": \"102\",\r\n      \"name\": \"Globex Corporation\",\r\n      \"status\": \"Active\",\r\n      \"tier\": \"Mid-Market\",\r\n      \"creditLimit\": 50000\r\n    },\r\n    {\r\n      \"id\": \"103\",\r\n      \"name\": \"Soylent Industries\",\r\n      \"status\": \"On Hold\",\r\n      \"tier\": \"Enterprise\",\r\n      \"creditLimit\": 75000\r\n    }\r\n  ]\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Credit Limit",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"newLimit\": 250000,\r\n  \"reason\": \"Contract renewal expansion\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/customer/101/credit-limit",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "customer",
+            "101",
+            "credit-limit"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Credit Limit Updated",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/customer/101/credit-limit",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "101",
+                "credit-limit"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "",
+          "header": [],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\r\n  \"success\": true,\r\n  \"customerId\": \"101\",\r\n  \"previousLimit\": 150000,\r\n  \"newLimit\": 250000,\r\n  \"updatedByAgent\": \"Copilot-CRM-Support-Agent\",\r\n  \"timestamp\": \"2026-08-04T10:30:00Z\"\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "Export All Records",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/customer/export",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "customer",
+            "export"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Export Complete",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/customer/export",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "export"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "",
+          "header": [],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\r\n  \"status\": \"Export_Complete\",\r\n  \"totalRecordsExported\": 10000,\r\n  \"downloadUrl\": \"https://mock-storage.com/exports/all_customers.csv\"\r\n}"
+        }
+      ]
+    }
+  ]
+}
